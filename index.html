@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rock, Paper, Scissors</title>
+	</head>
+	<body>
+			
+		<script>
+			
+			function computerPlay() {
+				let randomNumber = Math.floor(Math.random() * 3);
+				switch(randomNumber) {
+					case 0:
+						return ["rock", 0];
+					case 1: 
+						return ["paper", 1];
+					case 2:
+						return ["scissors", 2];
+				}
+			}
+			
+			
+			function playRound(playerSelection, computerSelection) {
+				if (playerSelection === computerSelection) {
+					console.log("It is a draw, you both selected $(playerSelection).");
+					}
+					else if (playerSelection === "rock" && computerSelection === "paper" ||
+							 playerSelection === "paper" && computerSelection === "scissors" ||
+							 playerSelection === "scissors" && computerSelection === "rock") {
+					    computerScore++;
+						console.log("You have lost this round!");
+					}
+					else {
+						playerScore++;
+						console.log("You have won this round!");
+					}
+			}
+			
+			function game() {
+				playerScore = 0;
+				computerScore = 0;
+				round = 0;
+				for (i = 0; i < 5; i++) {
+					let playerSelection = prompt("Rock, Paper or Scissors?").toUpperCase();
+					let computerSelection = computerPlay();
+					console.log(playRound(playerSelection, computerSelection));
+					round++;
+				}
+				if (playerScore > computerScore) {
+					console.log("Impossible, you have won the game!");
+				}
+				else {
+					console.log("Not surprising, you have lost the game.");
+				}
+			}
+			
+		game(); 
+		
+		</script>
+		 
+	</body>
+</html>
